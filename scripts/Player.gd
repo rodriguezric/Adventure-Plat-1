@@ -2,6 +2,8 @@ extends KinematicBody2D
 class_name Player
 
 signal died
+
+export (Resource) var bullet_resource
  
 var health: int = 3
 
@@ -13,6 +15,8 @@ var move: Vector2
 
 var state_stack = []
 var state_current = null
+
+
 onready var state_map = {
 	'idle': $States/Idle,
 	'fall': $States/Fall,
@@ -78,3 +82,13 @@ func damage(amount: int) -> void:
 
 func kill() -> void:
 	queue_free()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack"):
+		shoot()
+
+func shoot() -> void:
+	var bullet = bullet_resource.instance()
+	bullet.transform = transform
+	get_parent().add_child(bullet)

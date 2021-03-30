@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tilesets/white-block-16x16.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/World.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Dialog.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Projectile.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -13,6 +14,7 @@ script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 112, 104 )
+bullet_resource = ExtResource( 5 )
 
 [node name="TileMap-16x16" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -74,14 +76,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HazzardTest" type="Area2D" parent="."]
 position = Vector2( 264, 120 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazzardTest"]
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="Area2D"]
+[node name="Polygon2D" type="Polygon2D" parent="HazzardTest"]
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -8, -8, 8, 8, 8, 8, -8 )
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="HazzardTest" to="." method="_on_Area2D_body_entered"]
