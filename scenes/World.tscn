@@ -83,4 +83,5 @@ shape = SubResource( 1 )
 [node name="Polygon2D" type="Polygon2D" parent="Area2D"]
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -8, -8, 8, 8, 8, 8, -8 )
+[connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

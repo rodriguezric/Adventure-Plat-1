@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Player
 
+signal died
+ 
 var health: int = 3
 
 var move_speed: int = 250
@@ -71,7 +73,7 @@ func is_alive() -> bool:
 func damage(amount: int) -> void:
 	health = max(0, health - amount)
 	if health == 0:
-		# signal death
+		emit_signal("died")
 		pass
 
 func kill() -> void:
