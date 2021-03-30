@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Player
 
+var health: int = 3
 
 var move_speed: int = 250
 var jump_force: int = -250
@@ -62,3 +63,16 @@ func _handle_floor_touch() -> void:
 func _handle_friction() -> void:
 	move.x = lerp(move.x, 0, friction)
 
+
+func is_alive() -> bool:
+	return health > 0
+
+
+func damage(amount: int) -> void:
+	health = max(0, health - amount)
+	if health == 0:
+		# signal death
+		pass
+
+func kill() -> void:
+	queue_free()
