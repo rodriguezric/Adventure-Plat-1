@@ -63,7 +63,7 @@ func _handle_gravity(delta) -> void:
 
 
 func _handle_floor_touch() -> void:
-	move.y = 0
+	move.y = 100
 
 
 func _handle_friction() -> void:
