@@ -10,8 +10,7 @@ func update(host: Player, delta):
 		emit_signal("change_state", "jump")
 	
 	if not host.is_on_floor():
-		print("FALL!")
 		emit_signal("change_state", "fall")
 
-	if host.move.x == 0:
+	if abs(host.move.x) <= 1:
 		emit_signal("change_state", "idle")

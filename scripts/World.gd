@@ -10,6 +10,7 @@ func _ready() -> void:
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	if body is Player:
+		body.stun()
 		body.damage(1)
 		print(body.health)
 
