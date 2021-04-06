@@ -5,6 +5,7 @@ onready var timer = $Timer
 
 
 func enter(host: Player) -> void:
+	host.animation_player.play("hurt")
 	host.move.x *= -1
 	host.move.y *= -0.5
 	timer.start()
