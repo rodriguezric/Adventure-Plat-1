@@ -36,6 +36,10 @@ config/name="Adventure Plat 1"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Directions="*res://scripts/autoload/Directions.gd"
+
 [display]
 
 window/size/width=512

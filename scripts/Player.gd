@@ -6,6 +6,7 @@ signal died
 export (Resource) var bullet_resource
  
 var health: int = 3
+var dir: int = Directions.RIGHT
 
 var move_speed: int = 250
 var jump_force: int = -250
@@ -27,7 +28,7 @@ onready var state_map = {
 
 func _ready() -> void:
 	enter_state('idle')
-	
+
 
 func _physics_process(delta: float) -> void:
 	update_state(delta)
@@ -102,11 +103,18 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		shoot()
 
+	if event.is_action_pressed("move_left"):
+		dir = Directions.LEFT
+
+	if event.is_action_pressed("move_right"):
+		dir = Directions.RIGHT
+
 
 func shoot() -> void:
 	var bullet = bullet_resource.instance()
 	bullet.transform = transform
 	get_parent().add_child(bullet)
+	print(dir)
 
 
 func _on_Stun_change_state() -> void:
