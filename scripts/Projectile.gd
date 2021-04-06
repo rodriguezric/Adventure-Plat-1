@@ -4,6 +4,7 @@ extends Area2D
 var speed: int = 250
 var damage: int = 1
 var shoot_direction: float = 0
+var dir: int = Directions.RIGHT
 
 
 func rotate_to_direction() -> void:
@@ -11,7 +12,7 @@ func rotate_to_direction() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	move_local_x(delta * speed)
+	move_local_x(delta * speed * dir)
 
 
 func _on_LifeTimer_timeout() -> void:

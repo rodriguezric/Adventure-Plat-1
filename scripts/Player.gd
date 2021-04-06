@@ -113,8 +113,8 @@ func _input(event: InputEvent) -> void:
 func shoot() -> void:
 	var bullet = bullet_resource.instance()
 	bullet.transform = transform
+	bullet.dir = dir
 	get_parent().add_child(bullet)
-	print(dir)
 
 
 func _on_Stun_change_state() -> void:
