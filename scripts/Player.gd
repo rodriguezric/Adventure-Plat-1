@@ -16,7 +16,7 @@ var move: Vector2
 var state_stack = []
 var state_current = null
 
-
+onready var animation_player = $AnimationPlayer
 onready var state_map = {
 	'idle': $States/Idle,
 	'fall': $States/Fall,

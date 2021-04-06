@@ -1,6 +1,10 @@
 extends State
 
 
+func enter(host: Player) -> void:
+	host.animation_player.play("idle")
+
+
 func update(host: Player, delta) -> void:
 	host._handle_movement()
 	host._handle_friction()

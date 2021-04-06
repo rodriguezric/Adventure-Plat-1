@@ -5,6 +5,10 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+func enter(host: Player) -> void:
+	host.animation_player.play("idle")
+
+
 func update(host: Player, delta) -> void:
 	host._handle_friction()
 	host._handle_floor_touch()
