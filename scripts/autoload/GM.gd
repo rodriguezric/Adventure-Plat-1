@@ -1,5 +1,6 @@
 extends Node
 
+var bullets_live: int = 0
 
 var player = {
 	"max_health": 4
@@ -7,8 +8,8 @@ var player = {
 
 var weapon = {
 	"max": 1,
-	"speed": 200,
-	"time": 0.1,
+	"speed": 150,
+	"time": 0.15,
 	"damage": 1
 }
 

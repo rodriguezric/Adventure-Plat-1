@@ -1,14 +1,18 @@
 extends Area2D
 
 
+onready var timer = $LifeTimer
+
 var speed: int = 250
 var damage: int = 1
-var shoot_direction: float = 0
 var dir: int = Directions.RIGHT
 
 
-func rotate_to_direction() -> void:
-	rotate(shoot_direction)
+func initialize_from_gm() -> void:
+	GM.bullets_live += 1
+	damage = GM.weapon.damage
+	speed = GM.weapon.speed
+	timer.start(GM.weapon.time)
 
 
 func _physics_process(delta: float) -> void:
@@ -16,5 +20,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_LifeTimer_timeout() -> void:
-	#emit death signal
 	queue_free()
+
+func _notification(type):
+	if type == NOTIFICATION_PREDELETE:
+		GM.bullets_live -= 1
