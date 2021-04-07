@@ -27,6 +27,7 @@ onready var state_map = {
 }
 
 func _ready() -> void:
+	health = GM.player.max_health
 	enter_state('idle')
 
 
