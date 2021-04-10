@@ -1,7 +1,7 @@
 extends Node2D
 
 
-onready var dialog = $UI/CanvasLayer/VBoxContainer/Panel/Text
+onready var dialog = $UI/CanvasLayer/VBoxContainer/MarginContainer/Panel/HBoxContainer/MarginContainer/Text
 onready var player = $Player
 
 func _ready() -> void:
