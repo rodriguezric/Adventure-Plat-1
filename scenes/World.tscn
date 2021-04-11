@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tilesets/white-block-16x16.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,7 +6,21 @@
 [ext_resource path="res://scripts/Dialog.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Projectile.tscn" type="PackedScene" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 8 )
 
 [node name="World" type="Node2D"]
@@ -34,56 +48,201 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+[node name="C" type="CanvasLayer" parent="UI"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer"]
+[node name="VB" type="VBoxContainer" parent="UI/C"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/CanvasLayer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="UI/C/VB"]
 margin_right = 512.0
-margin_bottom = 97.0
+margin_bottom = 148.0
 size_flags_vertical = 3
 
-[node name="CenterContainer2" type="CenterContainer" parent="UI/CanvasLayer/VBoxContainer"]
-margin_top = 101.0
-margin_right = 512.0
-margin_bottom = 198.0
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="UI/CanvasLayer/VBoxContainer"]
-margin_top = 202.0
+[node name="M" type="MarginContainer" parent="UI/C/VB"]
+margin_top = 152.0
 margin_right = 512.0
 margin_bottom = 300.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="BGP" type="Panel" parent="UI/C/VB/M"]
+margin_right = 512.0
+margin_bottom = 148.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="RichTextLabel" parent="UI/CanvasLayer/VBoxContainer/Panel"]
+[node name="HB" type="HBoxContainer" parent="UI/C/VB/M/BGP"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="M" type="MarginContainer" parent="UI/C/VB/M/BGP/HB"]
+margin_right = 336.0
+margin_bottom = 148.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 6
+custom_constants/margin_top = 6
+custom_constants/margin_left = 6
+custom_constants/margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog" type="RichTextLabel" parent="UI/C/VB/M/BGP/HB/M"]
+margin_left = 6.0
 margin_top = 6.0
-margin_right = -12.0
-margin_bottom = -12.0
+margin_right = 330.0
+margin_bottom = 142.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="P" type="Panel" parent="UI/C/VB/M/BGP/HB"]
+margin_left = 340.0
+margin_right = 512.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 172, 0 )
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="M" type="MarginContainer" parent="UI/C/VB/M/BGP/HB/P"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 6
+custom_constants/margin_top = 6
+custom_constants/margin_left = 6
+custom_constants/margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="UI/C/VB/M/BGP/HB/P/M"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 166.0
+margin_bottom = 142.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HEALTH" type="HBoxContainer" parent="UI/C/VB/M/BGP/HB/P/M/VB"]
+margin_right = 160.0
+margin_bottom = 15.0
+
+[node name="label" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/HEALTH"]
+margin_right = 156.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "HP:"
+
+[node name="value" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/HEALTH"]
+margin_left = 160.0
+margin_right = 160.0
+margin_bottom = 15.0
+
+[node name="GOLD" type="HBoxContainer" parent="UI/C/VB/M/BGP/HB/P/M/VB"]
+margin_top = 19.0
+margin_right = 160.0
+margin_bottom = 34.0
+
+[node name="label" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/GOLD"]
+margin_right = 144.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "GOLD:"
+
+[node name="value" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/GOLD"]
+margin_left = 148.0
+margin_right = 160.0
+margin_bottom = 15.0
+text = "0"
+
+[node name="S" type="HBoxContainer" parent="UI/C/VB/M/BGP/HB/P/M/VB"]
+margin_top = 38.0
+margin_right = 160.0
+margin_bottom = 53.0
+
+[node name="Label" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/S"]
+margin_right = 160.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+
+[node name="DAMAGE" type="HBoxContainer" parent="UI/C/VB/M/BGP/HB/P/M/VB"]
+margin_top = 57.0
+margin_right = 160.0
+margin_bottom = 72.0
+
+[node name="label" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/DAMAGE"]
+margin_right = 149.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "DAMAGE:"
+
+[node name="value" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/DAMAGE"]
+margin_left = 153.0
+margin_right = 160.0
+margin_bottom = 15.0
+text = "1"
+
+[node name="SPEED" type="HBoxContainer" parent="UI/C/VB/M/BGP/HB/P/M/VB"]
+margin_top = 76.0
+margin_right = 160.0
+margin_bottom = 91.0
+
+[node name="label" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/SPEED"]
+margin_right = 149.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "SPEED:"
+
+[node name="value" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/SPEED"]
+margin_left = 153.0
+margin_right = 160.0
+margin_bottom = 15.0
+text = "1"
+
+[node name="TIME" type="HBoxContainer" parent="UI/C/VB/M/BGP/HB/P/M/VB"]
+margin_top = 95.0
+margin_right = 160.0
+margin_bottom = 110.0
+
+[node name="label" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/TIME"]
+margin_right = 149.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "TIME:"
+
+[node name="value" type="Label" parent="UI/C/VB/M/BGP/HB/P/M/VB/TIME"]
+margin_left = 153.0
+margin_right = 160.0
+margin_bottom = 15.0
+text = "1"
+
 [node name="HazzardTest" type="Area2D" parent="."]
 position = Vector2( 264, 120 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazzardTest"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Polygon2D" type="Polygon2D" parent="HazzardTest"]
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -8, -8, 8, 8, 8, 8, -8 )
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
+[connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
 [connection signal="body_entered" from="HazzardTest" to="." method="_on_Area2D_body_entered"]

@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Player
 
 signal died
+signal health_changed
 
 export (Resource) var bullet_resource
  
@@ -91,9 +92,16 @@ func stun() -> void:
 
 func damage(amount: int) -> void:
 	health = max(0, health - amount)
+	emit_signal("health_changed")
+	
 	if health == 0:
 		emit_signal("died")
 		pass
+
+
+func heal(amount: int) -> void:
+	health = min(health + amount, GM.player.max_health)
+	emit_signal("health_changed")
 
 
 func kill() -> void:
