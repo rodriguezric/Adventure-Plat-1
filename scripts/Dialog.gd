@@ -35,7 +35,8 @@ func show_next_page() -> void:
 
 
 func set_dialogue(_dialogue):
-	dialogue = _dialogue
+	for page in _dialogue:
+		dialogue.push_back(page)
 
 
 func fast_forward() -> void:
@@ -63,7 +64,6 @@ func show_next_character():
 
 
 func show_dialogue(_dialogue) -> void:
-	get_parent().visible = true
 	set_dialogue(_dialogue)
 	show_page()
 

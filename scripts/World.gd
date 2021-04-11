@@ -30,3 +30,7 @@ func ui_update_hp() -> void:
 
 func _on_Player_health_changed() -> void:
 	ui_update_hp()
+
+
+func _on_Sign_send_message(_dialogue) -> void:
+	dialog.show_dialogue(_dialogue)
