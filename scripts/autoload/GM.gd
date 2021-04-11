@@ -1,9 +1,10 @@
 extends Node
 
 var bullets_live: int = 0
+var gold: int = 0
 
 var player = {
-	"max_health": 4
+	"max_health": 3
 }
 
 var weapon = {
