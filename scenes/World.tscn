@@ -111,6 +111,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Timer" type="Timer" parent="UI/C/VB/M/BGP/HB/M/Dialog"]
+wait_time = 0.25
+autostart = true
+
 [node name="P" type="Panel" parent="UI/C/VB/M/BGP/HB"]
 margin_left = 340.0
 margin_right = 512.0
@@ -245,4 +249,5 @@ color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -8, -8, 8, 8, 8, 8, -8 )
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
+[connection signal="timeout" from="UI/C/VB/M/BGP/HB/M/Dialog/Timer" to="UI/C/VB/M/BGP/HB/M/Dialog" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="HazzardTest" to="." method="_on_Area2D_body_entered"]
