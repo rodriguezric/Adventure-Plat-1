@@ -35,6 +35,7 @@ func show_next_page() -> void:
 
 
 func set_dialogue(_dialogue):
+	dialogue = []
 	for page in _dialogue:
 		dialogue.push_back(page)
 
