@@ -5,7 +5,9 @@ signal died
 signal health_changed
 
 export (Resource) var bullet_resource
- 
+
+onready var camera: Camera2D = $Camera2D
+
 var health: int = 3
 var dir: int = Directions.RIGHT
 

@@ -1,5 +1,7 @@
 extends Node2D
 
+export var camera_limit_left: int
+export var camera_limit_right: int
 
 onready var player : Player = $Player
 onready var dialog : DialogText = $UI/C/VB/M/BGP/HB/M/Dialog
@@ -9,7 +11,9 @@ onready var ui = {
 
 func _ready() -> void:
 	ui_update_hp()
-	dialog.show_dialogue(["Hello", "Testing this one", "This is the final test."])
+	dialog.show_dialogue(["The Town"])
+	player.camera.limit_left = camera_limit_left
+	player.camera.limit_right = camera_limit_right
 
 
 func _on_Area2D_body_entered(body: Node) -> void:
@@ -34,3 +38,4 @@ func _on_Player_health_changed() -> void:
 
 func _on_Sign_send_message(_dialogue) -> void:
 	dialog.show_dialogue(_dialogue)
+
