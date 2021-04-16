@@ -26,16 +26,18 @@ extents = Vector2( 8, 8 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
+camera_limit_right = 704
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 112, 104 )
 bullet_resource = ExtResource( 5 )
 
 [node name="TileMap-16x16" type="TileMap" parent="."]
+z_index = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 327680, 0, 0, 393216, 0, 0, 458752, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 43, 0, 0, 65536, 0, 0, 65579, 0, 0, 131072, 0, 0, 131115, 0, 0, 196608, 0, 0, 196651, 0, 0, 262144, 0, 0, 262187, 0, 0, 327680, 0, 0, 327723, 0, 0, 393216, 0, 0, 393256, 0, 0, 393257, 0, 0, 393258, 0, 0, 393259, 0, 0, 458752, 0, 0, 458789, 0, 0, 458790, 0, 0, 458791, 0, 0, 458792, 0, 0, 458793, 0, 0, 458794, 0, 0, 458795, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524328, 0, 0, 524329, 0, 0, 524330, 0, 0, 524331, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 589863, 0, 0, 589864, 0, 0, 589865, 0, 0, 589866, 0, 0, 589867, 0, 0 )
 
 [node name="TileMap-8x8" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -240,7 +242,11 @@ margin_bottom = 15.0
 text = "1"
 
 [node name="HazzardTest" type="Area2D" parent="."]
-position = Vector2( 264, 120 )
+position = Vector2( 340, 152 )
+scale = Vector2( 45.3779, 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazzardTest"]
 shape = SubResource( 3 )
@@ -250,14 +256,20 @@ color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -8, -8, 8, 8, 8, 8, -8 )
 
 [node name="Sign" parent="." instance=ExtResource( 6 )]
-dialogue = [ "Welcome to the game" ]
+position = Vector2( 176, 120 )
+dialogue = [ "Welcome to the Town!" ]
 
 [node name="Sign2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 392, 120 )
-dialogue = [ "I can't believe you made it this far!", "Congrats, I guess :)" ]
+dialogue = [ "You must wonder why we built our town on top of lava...", "Honestly, I don't think we had much of a choice in the matter." ]
+
+[node name="Sign3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 616, 104 )
+dialogue = [ "The Cave" ]
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
 [connection signal="timeout" from="UI/C/VB/M/BGP/HB/M/Dialog/Timer" to="UI/C/VB/M/BGP/HB/M/Dialog" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="HazzardTest" to="." method="_on_Area2D_body_entered"]
 [connection signal="send_message" from="Sign" to="." method="_on_Sign_send_message"]
 [connection signal="send_message" from="Sign2" to="." method="_on_Sign_send_message"]
+[connection signal="send_message" from="Sign3" to="." method="_on_Sign_send_message"]
