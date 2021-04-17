@@ -1,5 +1,10 @@
 extends Control
 
+onready var start_button = $VSplitContainer/CenterContainer2/VBoxContainer/StartButton
+
+
+func _ready() -> void:
+	start_button.grab_focus()
 
 
 func _on_QuitButton_pressed() -> void:
