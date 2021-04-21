@@ -9,6 +9,26 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Stat",
+"class": "BulletDamage",
+"language": "GDScript",
+"path": "res://scripts/classes/stats/BulletDamage.gd"
+}, {
+"base": "Stat",
+"class": "BulletQuantity",
+"language": "GDScript",
+"path": "res://scripts/classes/stats/BulletQuantity.gd"
+}, {
+"base": "Stat",
+"class": "BulletSpeed",
+"language": "GDScript",
+"path": "res://scripts/classes/stats/BulletSpeed.gd"
+}, {
+"base": "Stat",
+"class": "BulletTime",
+"language": "GDScript",
+"path": "res://scripts/classes/stats/BulletTime.gd"
+}, {
 "base": "RichTextLabel",
 "class": "DialogText",
 "language": "GDScript",
@@ -24,15 +44,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
 }, {
+"base": "Reference",
+"class": "Stat",
+"language": "GDScript",
+"path": "res://scripts/classes/stats/Stat.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://scripts/states/State.gd"
 } ]
 _global_script_class_icons={
+"BulletDamage": "",
+"BulletQuantity": "",
+"BulletSpeed": "",
+"BulletTime": "",
 "DialogText": "",
 "Door": "",
 "Player": "",
+"Stat": "",
 "State": ""
 }
 

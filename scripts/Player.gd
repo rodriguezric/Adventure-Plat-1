@@ -122,7 +122,7 @@ func _input(event: InputEvent) -> void:
 
 
 func shoot() -> void:
-	if GM.bullets_live < GM.weapon.max:
+	if GM.bullets_live < GM.weapon.max.get_value():
 		var bullet = bullet_resource.instance()
 		bullet.transform = transform
 		bullet.dir = dir
