@@ -8,10 +8,10 @@ var player = {
 }
 
 var weapon = {
-	"max": 1,
-	"speed": 150,
-	"time": 0.15,
-	"damage": 1
+	"max": BulletQuantity.new(),
+	"speed": BulletSpeed.new(),
+	"time": BulletTime.new(),
+	"damage": BulletDamage.new()
 }
 
 
