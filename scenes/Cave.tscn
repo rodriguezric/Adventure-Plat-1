@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tilesets/white-block-16x16.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/World.gd" type="Script" id=3]
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Projectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Powerup.tscn" type="PackedScene" id=6]
 
 [node name="Cave" type="Node2D"]
 script = ExtResource( 3 )
@@ -29,5 +30,9 @@ cell_size = Vector2( 8, 8 )
 format = 1
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="Powerup" parent="." instance=ExtResource( 6 )]
+position = Vector2( 40, 124 )
+type = "max"
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
