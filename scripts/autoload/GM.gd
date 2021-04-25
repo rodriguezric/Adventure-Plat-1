@@ -19,10 +19,7 @@ func initialize() -> void:
 	player = {
 		"max_health": 3
 	}
-	
-	weapon = {
-		"max": 1,
-		"speed": 200,
-		"time": 0.1,
-		"damage": 1
-	}
+
+
+func power_up(key: String) -> void:
+	weapon[key].level_up()
