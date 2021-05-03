@@ -8,7 +8,7 @@ const LEVEL_MIN := 1
 var level: int = 1
 
 func level_up() -> void:
-	level = max(level + 1, LEVEL_MAX)
+	level = min(level + 1, LEVEL_MAX)
 
 
 func level_down() -> void:
@@ -25,3 +25,6 @@ func is_min_level() -> bool:
 
 func get_value() -> float:
 	return get("base_value") + (level * get("modifier"))
+
+func get_level() -> int:
+	return level
