@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Door.gd"
 }, {
+"base": "TimerBehavior",
+"class": "PaceBehavior",
+"language": "GDScript",
+"path": "res://scripts/classes/actions/PaceBehavior.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -71,6 +76,7 @@ _global_script_class_icons={
 "BulletTime": "",
 "DialogText": "",
 "Door": "",
+"PaceBehavior": "",
 "Player": "",
 "Powerup": "",
 "Stat": "",

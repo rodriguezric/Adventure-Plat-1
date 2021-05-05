@@ -3,7 +3,10 @@ class_name TimerBehavior
 
 export var speed : int = 20
 export var interval : int = 1
-export(Array, String, "0", "wait", "up", "down", "left", "right") var actions
+export(Directions.Enum) var direction = Directions.LEFT
+export var bounce_off_wall : bool = false
+export(Array, String, "0", "wait", "up", "down", "left", "right", "forward") var actions
+
 var current_action : int = 0
 var motion : Vector2
 var parent: Node2D
@@ -11,7 +14,7 @@ var parent: Node2D
 
 
 func _ready() -> void:
-	print("I'm ready")
+	yield(get_tree(), "idle_frame")
 	parent = get_parent()
 	initialize_timer()
 	process_action()
@@ -48,9 +51,14 @@ func process_action() -> void:
 			motion.y = 0
 		'shoot':
 			pass
+		'forward':
+			motion.x = speed * direction
+		'jump':
+			pass
 
 
 func _physics_process(delta: float) -> void:
+	yield(get_tree(), "idle_frame")
 	parent.move_local_x(delta * motion.x)
 	parent.move_local_y(delta * motion.y)
 
