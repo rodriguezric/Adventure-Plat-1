@@ -5,7 +5,11 @@ export var speed : int = 20
 export var interval : int = 1
 export(Directions.Enum) var direction = Directions.LEFT
 export var bounce_off_wall : bool = false
-export(Array, String, "0", "wait", "up", "down", "left", "right", "forward") var actions
+export(Array, String, 
+	"0", "wait", 
+	"up", "down", "left", "right", 
+	"face-left", "face-right", "reverse",
+	"forward") var actions
 
 var current_action : int = 0
 var motion : Vector2
@@ -51,6 +55,12 @@ func process_action() -> void:
 			motion.y = 0
 		'shoot':
 			pass
+		'face-left':
+			direction = Directions.LEFT
+		'face-right':
+			direction = Directions.RIGHT
+		'reverse':
+			direction = Directions.LEFT if direction == Directions.RIGHT else Directions.RIGHT
 		'forward':
 			motion.x = speed * direction
 		'jump':
