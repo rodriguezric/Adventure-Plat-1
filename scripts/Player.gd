@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 
 
 func enter_state(state: String) -> void:
-	print(state)
 	if state == 'stun':
 		state_stack.push_back(state_current)
 	

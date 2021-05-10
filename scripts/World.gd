@@ -7,12 +7,12 @@ export var camera_bottom: int = 0
 export var area_name: String = ""
 
 onready var player : Player = $Player
-onready var dialog : DialogText = $UI/C/VB/M/BGP/HB/M/Dialog
+onready var dialog : DialogText = $UI/VB/M/BGP/HB/M/Dialog
 onready var ui = {
-	"hp": $UI/C/VB/M/BGP/HB/P/M/VB/HEALTH/value,
-	"damage": $UI/C/VB/M/BGP/HB/P/M/VB/DAMAGE/value,
-	"speed": $UI/C/VB/M/BGP/HB/P/M/VB/SPEED/value,
-	"time": $UI/C/VB/M/BGP/HB/P/M/VB/TIME/value
+	"hp": $UI/VB/M/BGP/HB/P/M/VB/HEALTH/value,
+	"damage": $UI/VB/M/BGP/HB/P/M/VB/DAMAGE/value,
+	"speed": $UI/VB/M/BGP/HB/P/M/VB/SPEED/value,
+	"time": $UI/VB/M/BGP/HB/P/M/VB/TIME/value
 }
 
 
@@ -26,12 +26,6 @@ func _ready() -> void:
 	player.camera.limit_top = camera_top
 	player.camera.limit_bottom = camera_bottom
 
-
-func _on_Area2D_body_entered(body: Node) -> void:
-	if body is Player:
-		body.stun()
-		body.damage(1)
-		print(body.health)
 
 
 func _on_Player_died() -> void:
@@ -54,3 +48,10 @@ func _on_Sign_send_message(_dialogue) -> void:
 
 func _on_Powerup_power_up(type: String) -> void:
 	ui[type].text = String(GM.weapon[type].get_level())
+
+
+func _on_Hazzard_damage_player(player: Player, amount: int) -> void:
+	player.damage(amount)
+	player.stun()
+
+

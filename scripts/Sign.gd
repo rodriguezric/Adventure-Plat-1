@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name Sign
 
 signal send_message
 

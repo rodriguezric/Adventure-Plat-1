@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Dialog.gd" type="Script" id=1]
+[ext_resource path="res://scripts/UI.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.133333, 0.133333, 0.133333, 1 )
@@ -16,35 +17,29 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
-[node name="UI" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="UI" type="CanvasLayer"]
+script = ExtResource( 2 )
 
-[node name="C" type="CanvasLayer" parent="."]
-
-[node name="VB" type="VBoxContainer" parent="C"]
+[node name="VB" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="C/VB"]
+[node name="CenterContainer" type="CenterContainer" parent="VB"]
 margin_right = 512.0
 margin_bottom = 122.0
 size_flags_vertical = 3
 
-[node name="CenterContainer2" type="CenterContainer" parent="C/VB"]
+[node name="CenterContainer2" type="CenterContainer" parent="VB"]
 margin_top = 126.0
 margin_right = 512.0
 margin_bottom = 174.0
 rect_min_size = Vector2( 0, 48 )
 size_flags_vertical = 0
 
-[node name="M" type="MarginContainer" parent="C/VB"]
+[node name="M" type="MarginContainer" parent="VB"]
 margin_top = 178.0
 margin_right = 512.0
 margin_bottom = 300.0
@@ -55,7 +50,7 @@ custom_constants/margin_top = 0
 custom_constants/margin_left = 0
 custom_constants/margin_bottom = 0
 
-[node name="BGP" type="Panel" parent="C/VB/M"]
+[node name="BGP" type="Panel" parent="VB/M"]
 margin_right = 512.0
 margin_bottom = 122.0
 custom_styles/panel = SubResource( 1 )
@@ -63,14 +58,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HB" type="HBoxContainer" parent="C/VB/M/BGP"]
+[node name="HB" type="HBoxContainer" parent="VB/M/BGP"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="M" type="MarginContainer" parent="C/VB/M/BGP/HB"]
+[node name="M" type="MarginContainer" parent="VB/M/BGP/HB"]
 margin_right = 336.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
@@ -83,7 +78,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dialog" type="RichTextLabel" parent="C/VB/M/BGP/HB/M"]
+[node name="Dialog" type="RichTextLabel" parent="VB/M/BGP/HB/M"]
 margin_left = 6.0
 margin_top = 6.0
 margin_right = 330.0
@@ -93,11 +88,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="C/VB/M/BGP/HB/M/Dialog"]
+[node name="Timer" type="Timer" parent="VB/M/BGP/HB/M/Dialog"]
 wait_time = 0.1
 autostart = true
 
-[node name="P" type="Panel" parent="C/VB/M/BGP/HB"]
+[node name="P" type="Panel" parent="VB/M/BGP/HB"]
 margin_left = 340.0
 margin_right = 512.0
 margin_bottom = 122.0
@@ -105,7 +100,7 @@ rect_min_size = Vector2( 172, 0 )
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
 
-[node name="M" type="MarginContainer" parent="C/VB/M/BGP/HB/P"]
+[node name="M" type="MarginContainer" parent="VB/M/BGP/HB/P"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -118,7 +113,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VB" type="VBoxContainer" parent="C/VB/M/BGP/HB/P/M"]
+[node name="VB" type="VBoxContainer" parent="VB/M/BGP/HB/P/M"]
 margin_left = 6.0
 margin_top = 6.0
 margin_right = 166.0
@@ -127,96 +122,96 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HEALTH" type="HBoxContainer" parent="C/VB/M/BGP/HB/P/M/VB"]
+[node name="HEALTH" type="HBoxContainer" parent="VB/M/BGP/HB/P/M/VB"]
 margin_right = 160.0
 margin_bottom = 15.0
 
-[node name="label" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/HEALTH"]
+[node name="label" type="Label" parent="VB/M/BGP/HB/P/M/VB/HEALTH"]
 margin_right = 156.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "HP:"
 
-[node name="value" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/HEALTH"]
+[node name="value" type="Label" parent="VB/M/BGP/HB/P/M/VB/HEALTH"]
 margin_left = 160.0
 margin_right = 160.0
 margin_bottom = 15.0
 
-[node name="GOLD" type="HBoxContainer" parent="C/VB/M/BGP/HB/P/M/VB"]
+[node name="GOLD" type="HBoxContainer" parent="VB/M/BGP/HB/P/M/VB"]
 margin_top = 19.0
 margin_right = 160.0
 margin_bottom = 34.0
 
-[node name="label" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/GOLD"]
+[node name="label" type="Label" parent="VB/M/BGP/HB/P/M/VB/GOLD"]
 margin_right = 144.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "GOLD:"
 
-[node name="value" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/GOLD"]
+[node name="value" type="Label" parent="VB/M/BGP/HB/P/M/VB/GOLD"]
 margin_left = 148.0
 margin_right = 160.0
 margin_bottom = 15.0
 text = "0"
 
-[node name="S" type="HBoxContainer" parent="C/VB/M/BGP/HB/P/M/VB"]
+[node name="S" type="HBoxContainer" parent="VB/M/BGP/HB/P/M/VB"]
 margin_top = 38.0
 margin_right = 160.0
 margin_bottom = 53.0
 
-[node name="Label" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/S"]
+[node name="Label" type="Label" parent="VB/M/BGP/HB/P/M/VB/S"]
 margin_right = 160.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 
-[node name="DAMAGE" type="HBoxContainer" parent="C/VB/M/BGP/HB/P/M/VB"]
+[node name="DAMAGE" type="HBoxContainer" parent="VB/M/BGP/HB/P/M/VB"]
 margin_top = 57.0
 margin_right = 160.0
 margin_bottom = 72.0
 
-[node name="label" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/DAMAGE"]
+[node name="label" type="Label" parent="VB/M/BGP/HB/P/M/VB/DAMAGE"]
 margin_right = 149.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "DAMAGE:"
 
-[node name="value" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/DAMAGE"]
+[node name="value" type="Label" parent="VB/M/BGP/HB/P/M/VB/DAMAGE"]
 margin_left = 153.0
 margin_right = 160.0
 margin_bottom = 15.0
 text = "1"
 
-[node name="SPEED" type="HBoxContainer" parent="C/VB/M/BGP/HB/P/M/VB"]
+[node name="SPEED" type="HBoxContainer" parent="VB/M/BGP/HB/P/M/VB"]
 margin_top = 76.0
 margin_right = 160.0
 margin_bottom = 91.0
 
-[node name="label" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/SPEED"]
+[node name="label" type="Label" parent="VB/M/BGP/HB/P/M/VB/SPEED"]
 margin_right = 149.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "SPEED:"
 
-[node name="value" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/SPEED"]
+[node name="value" type="Label" parent="VB/M/BGP/HB/P/M/VB/SPEED"]
 margin_left = 153.0
 margin_right = 160.0
 margin_bottom = 15.0
 text = "1"
 
-[node name="TIME" type="HBoxContainer" parent="C/VB/M/BGP/HB/P/M/VB"]
+[node name="TIME" type="HBoxContainer" parent="VB/M/BGP/HB/P/M/VB"]
 margin_top = 95.0
 margin_right = 160.0
 margin_bottom = 110.0
 
-[node name="label" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/TIME"]
+[node name="label" type="Label" parent="VB/M/BGP/HB/P/M/VB/TIME"]
 margin_right = 149.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "TIME:"
 
-[node name="value" type="Label" parent="C/VB/M/BGP/HB/P/M/VB/TIME"]
+[node name="value" type="Label" parent="VB/M/BGP/HB/P/M/VB/TIME"]
 margin_left = 153.0
 margin_right = 160.0
 margin_bottom = 15.0
 text = "1"
-[connection signal="timeout" from="C/VB/M/BGP/HB/M/Dialog/Timer" to="C/VB/M/BGP/HB/M/Dialog" method="_on_Timer_timeout"]
+[connection signal="timeout" from="VB/M/BGP/HB/M/Dialog/Timer" to="VB/M/BGP/HB/M/Dialog" method="_on_Timer_timeout"]
