@@ -3,14 +3,15 @@ class_name TimerBehavior
 
 export (Resource) var bullet_resource
 export var speed : int = 20
-export var interval : int = 1
+export var interval : float = 1
 export(Directions.Enum) var direction = Directions.LEFT
 export var bounce_off_wall : bool = false
-export(Array, String, 
+export(Array, Array, String, 
 	"0", "wait", 
 	"up", "down", "left", "right", 
-	"face-left", "face-right", "reverse",
+	"face_left", "face_right", "reverse",
 	"forward",
+	"jump", "fall", "land",
 	"shoot",
 	"die") var actions
 
@@ -39,40 +40,15 @@ func next_action() -> void:
 
 
 func process_action() -> void:
-	match actions[current_action]:
-		'wait': 
-			motion.x = 0
-			motion.y = 0
-		'up':
-			motion.x = 0
-			motion.y = -speed
-		'down':
-			motion.x = 0
-			motion.y = speed
-		'left':
-			motion.x = -speed
-			motion.y = 0
-		'right':
-			motion.x = speed
-			motion.y = 0
-		'shoot':
-			instance_bullet()
-		'face-left':
-			direction = Directions.LEFT
-		'face-right':
-			direction = Directions.RIGHT
-		'reverse':
-			if direction == Directions.RIGHT:
-				direction = Directions.LEFT
-			else:
-				direction = Directions.RIGHT
-		'forward':
-			motion.x = speed * direction
-		'jump':
-			pass
-		'die':
-			parent.queue_free()
-
+	var _actions = actions[current_action]
+	
+	if typeof(_actions) == TYPE_ARRAY:
+		for a in actions[current_action]:
+			var f = funcref(self, a)
+			f.call_func()
+	else:
+		var f = funcref(self, _actions)
+		f.call_func()
 
 func _physics_process(delta: float) -> void:
 	yield(get_tree(), "idle_frame")
@@ -84,7 +60,7 @@ func _on_Timer_timeout():
 	next_action()
 	process_action()
 
-func instance_bullet():
+func shoot():
 	var move_behavior = load("res://scripts/classes/actions/MoveBehavior.gd").new()
 	move_behavior.set_speed(100)
 	move_behavior.set_direction(direction)
@@ -97,3 +73,56 @@ func instance_bullet():
 	
 
 	get_parent().add_child(bullet)
+
+func wait():
+	motion.x = 0
+	motion.y = 0
+
+func reverse() -> void:
+	if direction == Directions.RIGHT:
+		direction = Directions.LEFT
+	else:
+		direction = Directions.RIGHT
+
+
+func jump() -> void: motion.y  = -speed
+
+
+func fall() -> void: motion.y = speed
+
+
+func land() -> void: motion.y = 0
+
+
+func die() -> void: queue_free()
+
+
+func face_left() -> void: direction = Directions.LEFT
+
+
+func face_right() -> void: direction = Directions.RIGHT
+
+
+func forward() -> void: motion.x = speed * direction
+
+
+func up() -> void:
+	wait()
+	jump()
+
+
+func down() -> void:
+	wait()
+	fall()
+
+
+func left() -> void:
+	wait()
+	face_left()
+	forward()
+
+
+func right() -> void:
+	wait()
+	face_right()
+	forward()

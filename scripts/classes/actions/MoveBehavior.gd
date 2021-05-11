@@ -2,7 +2,7 @@ extends TimerBehavior
 class_name MoveBehavior
 
 func _ready() -> void:
-	actions = ['forward']
+	actions = [['forward']]
 	parent = get_parent()
 
 
