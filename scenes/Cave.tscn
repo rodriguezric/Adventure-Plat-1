@@ -45,7 +45,10 @@ position = Vector2( 248, 216 )
 [node name="TimerBehavior" type="Node2D" parent="Enemy"]
 script = ExtResource( 7 )
 bullet_resource = ExtResource( 9 )
-actions = [ "shoot", "forward", "reverse", "shoot", "forward", "reverse" ]
+speed = 25
+interval = 1.5
+direction = 1
+actions = [ [ "reverse", "wait", "shoot" ], [ "forward" ] ]
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
 [connection signal="power_up" from="Powerup" to="." method="_on_Powerup_power_up"]
