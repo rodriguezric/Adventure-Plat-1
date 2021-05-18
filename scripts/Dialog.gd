@@ -19,6 +19,7 @@ func handle_page() -> void:
 	else:
 		fast_forward()
 
+
 func handle_next_page() -> void:
 	if has_more_pages():
 		show_next_page()
@@ -60,7 +61,7 @@ func remove_dialogue() -> void:
 	show_dialogue([""])
 
 
-func show_next_character():
+func show_next_character() -> void:
 	set_visible_characters(get_visible_characters() + 1)
 
 

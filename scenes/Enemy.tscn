@@ -14,4 +14,5 @@ shape = SubResource( 1 )
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -8, -8, 8, 8, 8, 8, -8 )
+[connection signal="area_entered" from="." to="." method="_on_Hazzard_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Hazzard_body_entered"]

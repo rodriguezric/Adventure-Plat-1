@@ -73,6 +73,6 @@ target_scene = "Cave"
 visible = true
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
-[connection signal="body_entered" from="HazzardTest" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="HazzardTest" to="." method="_on_HazzardTest_body_entered"]
 [connection signal="send_message" from="Sign" to="." method="_on_Sign_send_message"]
 [connection signal="send_message" from="Sign2" to="." method="_on_Sign_send_message"]

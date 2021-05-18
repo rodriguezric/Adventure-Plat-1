@@ -55,3 +55,6 @@ func _on_Hazzard_damage_player(player: Player, amount: int) -> void:
 	player.stun()
 
 
+func _on_HazzardTest_body_entered(body: Node) -> void:
+	player.damage(1)
+	player.stun()
