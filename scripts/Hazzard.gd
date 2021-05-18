@@ -27,3 +27,4 @@ func _on_Hazzard_area_entered(area: Area2D) -> void:
 	if area is Projectile:
 		if damageable:
 			_damage(area.damage)
+

@@ -17,7 +17,7 @@ camera_bottom = 720
 area_name = "The Cave"
 
 [node name="UI" parent="." instance=ExtResource( 8 )]
-visible = false
+visible = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 112, 104 )
@@ -52,5 +52,3 @@ actions = [ [ "reverse", "wait", "shoot" ], [ "forward" ] ]
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="health_changed" from="Player" to="." method="_on_Player_health_changed"]
 [connection signal="power_up" from="Powerup" to="." method="_on_Powerup_power_up"]
-[connection signal="area_entered" from="Enemy" to="Enemy" method="_on_Enemy_area_entered"]
-[connection signal="damage_player" from="Enemy" to="." method="_on_Hazzard_damage_player"]
