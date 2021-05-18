@@ -51,7 +51,7 @@ shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 use_parent_material = true
-color = Color( 0, 1, 0, 1 )
+color = Color( 0.25, 1, 0.25, 1 )
 polygon = PoolVector2Array( -8, -8, -8, 8, 8, 8, 8, -8 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
