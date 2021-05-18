@@ -70,7 +70,6 @@ func shoot():
 	bullet.add_child(move_behavior)
 	var root_node = get_tree().root.get_child(0)
 	bullet.connect("damage_player", parent.get_parent(), "_on_Hazzard_damage_player")
-	
 
 	get_parent().add_child(bullet)
 
